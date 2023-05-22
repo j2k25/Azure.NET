@@ -6,17 +6,28 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DotNetAppSqlDb.Models;using System.Diagnostics;
+using DotNetAppSqlDb.Models;
+using System.Diagnostics;
 
 namespace DotNetAppSqlDb.Controllers
 {
+    public class HomeController : Controller
+    {
+        //
+        // GET: /Home/
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+
     public class TodosController : Controller
     {
         private MyDatabaseContext db = new MyDatabaseContext();
 
         // GET: Todos
         public ActionResult Index()
-        {            
+        {
             Trace.WriteLine("GET /Todos/Index");
             return View(db.Todoes.ToList());
         }
